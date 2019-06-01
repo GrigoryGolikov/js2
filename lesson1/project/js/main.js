@@ -12,13 +12,13 @@ const products = [
 ];
 
 // добавил значения по умолчанию title = "no name", price = 0
-const renderProduct = (title = "no name", price = 0) => {
-    return `<div class="product-item">
-                <h3>${title}</h3>
-                <p class  = "price-text">${price} руб. </p>
-                <button class="buy-btn">Купить</button>
-            </div>`
-};
+// убрал return
+const renderProduct = (title = "no name", price = 0) => 
+    `<div class="product-item">
+        <h3>${title}</h3>
+        <p class  = "price-text">${price} руб. </p>
+        <button class="buy-btn">Купить</button>
+    </div>`;
 
 const renderPage = list => {
     const productsList = list.map(item => renderProduct(item.title, item.price));
