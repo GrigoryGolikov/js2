@@ -1,0 +1,86 @@
+/* {
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+    font-family: 'Lato', sans-serif;
+}*/
+header {
+    background-color: #807c7e;
+    padding: 30px 80px;
+}
+.logo {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.desc {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.product-item {
+    min-width: 200px;
+    border: 1px solid #e6e6e6; 
+    margin: 10px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+
+}
+
+.products {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+
+
+.price-text {
+    margin-top: 0px;
+    font-family: 'Lato', sans-serif;
+
+}
+
+.buy-btn {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #f16d7f;
+    text-align: center;
+    border: 1px solid #f16d7f;
+    transition: 0.3s;    
+    margin-top: 0px;
+    font-family: 'Lato', sans-serif;
+    padding: 10px 20px;
+
+}
+.buy-btn:hover{
+    color: #f16d7f;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.btn-cart {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #f16d7f;
+    text-align: center;
+    border: 1px solid #f16d7f;
+    transition: 0.3s;
+    font-family: 'Lato', sans-serif;
+    padding: 10px 20px;
+
+}
+
+.btn-cart:hover{
+    color: #f16d7f;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+
