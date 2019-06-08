@@ -129,16 +129,27 @@ header {
     position: relative;
 }
 
-.cart-linc-box:hover .drop-cart {
+/*.cart-linc-box:hover .drop-cart {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+}*/
 
 .drop-cart-on {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 12px 20px 20px;
+    border: 1px solid #ebebeb;
+    top: 60px;
+    left: -175px;
+    position: absolute;
+    z-index: 110;
+    min-width: 235px;
+    padding: 0px 20px 20px 20px;
 }
 
 .header-cart {

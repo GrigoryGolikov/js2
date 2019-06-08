@@ -80,7 +80,12 @@ class Cart {
 
     cartText() { } // возвращает текущее представление корзины, например "Корзина пуста", "В корзине n товаров на s рублей"
 
-    seeCart(){}
+    seeCart(){
+        let block = document.querySelector("#cart");
+        block.classList.toggle("drop-cart");
+        block.classList.toggle("drop-cart-on");
+        console.log(block);
+    }
 
     //  сумма корзины
     cartPrice() {
@@ -98,10 +103,10 @@ class Cart {
     addProduct(id_product, quantity = 1) {
 
         // ищем товар в корзине
-        var foundProduct = this.cartProducts.find(x => x.id_product == id_product);
+        let foundProduct = this.cartProducts.find(x => x.id_product == id_product);
         // если в корзине нет нужного товара то добавляем его
         if (foundProduct === undefined) {
-            var foundProduct = products.allProducts.find(x => x.id_product == id_product);
+            let foundProduct = products.allProducts.find(x => x.id_product == id_product);
             const product = new CartItem(foundProduct);
             this.cartProducts.push(product);
             const block = document.querySelector(this.container);
@@ -122,12 +127,12 @@ class Cart {
     // удаляет товар из корзины, на вход id товара и количество
     removeProduct(id_product, quantity = 1) {
 
-        var foundProduct = this.cartProducts.find(x => x.id_product == id_product);
+        let foundProduct = this.cartProducts.find(x => x.id_product == id_product);
         if (foundProduct != undefined) {
             --foundProduct.quantity;
             if (foundProduct.quantity === 0) {
                 // удалим из корзины
-                var index = this.cartProducts.indexOf(foundProduct);
+                let index = this.cartProducts.indexOf(foundProduct);
                 if (index >= 0) {
                     this.cartProducts.splice(index, 1);
                     // удалим div из корзины
@@ -146,8 +151,8 @@ class Cart {
 
     // удаляет товар из корзины 
     ClearProduct(id_product) {
-        var foundProduct = this.cartProducts.find(x => x.id_product == id_product);
-        var index = this.cartProducts.indexOf(foundProduct);
+        let foundProduct = this.cartProducts.find(x => x.id_product == id_product);
+        let index = this.cartProducts.indexOf(foundProduct);
         if (index >= 0) {
             this.cartProducts.splice(index, 1);
             // удалим div из корзины
@@ -185,7 +190,7 @@ class Cart {
 
         // проверяем что нажали на кнопку
         if (event.target.tagName === "BUTTON") {
-            var id_product = event.currentTarget.dataset.id;
+            let id_product = event.currentTarget.dataset.id;
             if (event.target.textContent === "-") {
                 this.removeProduct(id_product, 1, event)
 
@@ -194,7 +199,7 @@ class Cart {
             } else if (event.target.textContent === "X") {
                 this.ClearProduct(id_product)
             }
-            var foundProduct = this.cartProducts.find(x => x.id_product == id_product);
+            let foundProduct = this.cartProducts.find(x => x.id_product == id_product);
             //   event.currentTarget.querySelector(".drop-cart-p").textContent = foundProduct.quantity + " x " + foundProduct.price;
         }
     }
