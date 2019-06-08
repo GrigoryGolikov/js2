@@ -129,12 +129,12 @@ header {
     position: relative;
 }
 
-/*.cart-linc-box:hover .drop-cart {
+.cart-linc-box:hover .drop-cart {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}*/
-
+}
+/*
 .drop-cart-on {
     display: flex;
     flex-direction: column;
@@ -150,7 +150,7 @@ header {
     z-index: 110;
     min-width: 235px;
     padding: 0px 20px 20px 20px;
-}
+}*/
 
 .header-cart {
     margin-right: 26px;
