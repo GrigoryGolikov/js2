@@ -81,7 +81,6 @@ class Cart {
     cartText() { } // возвращает текущее представление корзины, например "Корзина пуста", "В корзине n товаров на s рублей"
 
     seeCart(){
-        let block = document.querySelector(".drop-cart");
          
     }
 

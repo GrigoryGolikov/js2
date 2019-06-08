@@ -97,7 +97,7 @@ header {
     background-color: #ffffff;
     padding: 12px 20px 20px;
     border: 1px solid #ebebeb;
-   /* display: none;*/
+    display: none;
     top: 60px;
     left: -175px;
     position: absolute;
@@ -135,6 +135,11 @@ header {
     justify-content: space-between;
 }
 
+.drop-cart-on {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}в
 
 .header-cart {
     margin-right: 26px;
