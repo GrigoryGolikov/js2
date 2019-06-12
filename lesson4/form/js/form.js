@@ -18,7 +18,7 @@ document.querySelector('#buttonSend').addEventListener('click',() => {
     regMessage = /.+/igm;
 
     if (regName.test(name)) {
-        blockName.classList.add('div-ok');
+        blockName.classList.remove('div-error');
         blockName.nextElementSibling.textContent = "";
 
     } else{
@@ -27,7 +27,7 @@ document.querySelector('#buttonSend').addEventListener('click',() => {
     }  
 
     if (regPhone.test(phone)) {
-        blockPhone.classList.add('div-ok');
+        blockPhone.classList.remove('div-error');
         blockPhone.nextElementSibling.textContent = "";
 
     } else{
@@ -36,7 +36,7 @@ document.querySelector('#buttonSend').addEventListener('click',() => {
     }   
 
     if (regEmail.test(email)) {
-        blockEmail.classList.add('div-ok');
+        blockEmail.classList.remove('div-error');
         blockEmail.nextElementSibling.textContent = "";
 
     } else{
@@ -44,7 +44,7 @@ document.querySelector('#buttonSend').addEventListener('click',() => {
         blockEmail.nextElementSibling.textContent = "E-mail должен иметь вид mymail@mail.ru";
     }   
     if (regMessage.test(message)) {
-        blockMessage.classList.add('div-ok');
+        blockMessage.classList.remove('div-error');
         blockMessage.nextElementSibling.textContent = "";
 
     } else{
