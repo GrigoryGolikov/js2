@@ -36,9 +36,9 @@ class ProductsList {
     
     // Метод, определяет суммарную стоимость всех товаров.
     productsSum(){
-        var sum = 0;
-        for(var i = 0; i < this.allProducts.length; i++){
-            sum += this.allProducts[i].price;
+        let sum = 0;
+        for(let item of this.allProducts){
+            sum += item.price;
         }
         return sum;
     }
