@@ -1,59 +1,75 @@
-document.querySelector('#buttonSend').addEventListener('click',() => {
 
-    // берем с формы знаечни которые будем проверять
-    let blockEmailblockName = document.querySelector('[name = "name"]'); 
-    let blockPhone = document.querySelector('[name = "phone"]'); 
-    let blockEmail = document.querySelector('[name = "email"]'); 
-    let blockMessage = document.querySelector('[name = "message"]'); 
+class Validation {
+    constructor(form) {
+        this.form = form;
+        this.errors = {
+            name: "имя должно содержать только буквы",
+            phone: "телефон должен иметь формат +7(000)000-0000",
+            email: "E-mail должен иметь вид mymail@mail.ru",
+            message: "сообщение не должно быть пустым",
+        }
+        this.patterns = {
+            name: /^[a-zа-я]+$/i,
+            phone: /^\+7\(\d{3}\)\d{3}-\d{4}/i,
+            email: /^[a-z1-9-.]+@[a-z]+\.(com|ru)$/i,
+            message: /.+/im, 
+        }
 
-    let name = blockName.value; 
-    let phone = blockPhone.value; 
-    let email = blockEmail.value; 
-    let message = blockMessage.value; 
+        this.valid = false;
+        this.errorClass = 'error';
+        this._validateForm();
+    }
 
-    // реuулярные выражения для проверки
-    regName = /^[a-zа-я]+$/ig;
-    regPhone = /^\+7\(\d{3}\)\d{3}-\d{4}/ig;
-    regEmail = /^[a-z1-9-.]+@[a-z]+\.(com|ru)$/ig;
-    regMessage = /.+/igm;
+    _validateForm(){
+        let errors = [...document.querySelectorAll(`.${this.errorClass}`)];
 
-    if (regName.test(name)) {
-        blockName.classList.remove('div-error');
-        blockName.nextElementSibling.textContent = "";
+        for (let item of errors){
+            item.remove();
+        }
 
-    } else{
-        blockName.classList.add('div-error');
-        blockName.nextElementSibling.textContent = "имя должно содержать только буквы";
-    }  
+        let formValid = [...document.getElementById(this.form).getElementsByTagName("input")];
+        for (let field of formValid){
+            this.validate(field);
+        }     
 
-    if (regPhone.test(phone)) {
-        blockPhone.classList.remove('div-error');
-        blockPhone.nextElementSibling.textContent = "";
+        if (![...document.querySelectorAll(`.${this.errorClass}`)].length) {
+            this.valid = true;
+        }
 
-    } else{
-        blockPhone.classList.add('div-error');
-        blockPhone.nextElementSibling.textContent = "телефон должен иметь формат +7(000)000-0000";
-    }   
+    }
 
-    if (regEmail.test(email)) {
-        blockEmail.classList.remove('div-error');
-        blockEmail.nextElementSibling.textContent = "";
+    validate(field){
+        if (this.patterns[field.name]){
+            if (!this.patterns[field.name].test(field.value)){
+                field.classList.add("div-error");
+                this.addErrorMsg(field);
+                this._watchField(field);
+            }
+        }
+    }
 
-    } else{
-        blockEmail.classList.add('div-error');
-        blockEmail.nextElementSibling.textContent = "E-mail должен иметь вид mymail@mail.ru";
-    }   
-    if (regMessage.test(message)) {
-        blockMessage.classList.remove('div-error');
-        blockMessage.nextElementSibling.textContent = "";
+    addErrorMsg(field){
+        let error = `<div class = "${this.errorClass}"> ${this.errors[field.name]} </div>`
+        field.parentNode.insertAdjacentHTML("beforeend",error);
+    }
 
-    } else{
-        blockMessage.classList.add('div-error');
-        blockMessage.nextElementSibling.textContent = "сообщение не должно быть пустым";
-    }   
-
+    _watchField(field){
+        field.addEventListener("input", () => {
+            let error = field.parentNode.querySelector(`.${this.errorClass}`);
+            if(this.patterns[field.name].test(field.value)){
+                field.classList.remove("div-error");
+                field.classList.add("div-ok");
+                if (error){
+                    error.remove();
+                }
+            } else {
+                field.classList.add("div-error");
+                field.classList.remove("div-ok");
+                if (!error){
+                    this.addErrorMsg(field);
+                }
+            }
+        })
+    }
 }
-);
-
-let blockName = document.querySelector('[name = "name"]'); 
 

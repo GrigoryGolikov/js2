@@ -8,27 +8,42 @@
 </head>
 
 <body>
-    <form action="#" method="post">
-        <label id="name">
-            <input type="text" name="name" placeholder="имя">
-            <div class="error"></div>
-        </label>
-        <label id="phone">
-            <input type="tel" name="phone" placeholder="+7(000)000-0000">
-            <div class="error"> </div>
-        </label>
-        <label id="email">
-            <input type="email" name="email" placeholder="е-mail">
-            <div class="error"> </div>
-        </label>
-        <label id="message">
-            <textarea placeholder="Текст сообщения" name="message"></textarea>
-            <div class="error"> </div>
-        </label>
-        <button class="button" type="button" id = "buttonSend">Отправить</button>
+    <form action="#" method="post" id="myform">
+        <div>
+            <label id="name">
+                <input type="text" name="name" placeholder="имя">
+            </label>
+        </div>
+        <div>
+            <label id="phone">
+                <input type="tel" name="phone" placeholder="+7(000)000-0000">
+            </label>
+        </div>
+        <div>
+            <label id="email">
+                <input type="email" name="email" placeholder="е-mail">
+            </label>
+        </div>
+        <div>
+            <label id="message">
+                <textarea placeholder="Текст сообщения" name="message"></textarea>
+            </label>
+        </div>
+        <button class="button" id="val-btn">Отправить</button>
     </form>
 
     <script defer src="js/form.js"></script>
+    <script>
+        window.onload = () => {
+            document.getElementById("myform").addEventListener("submit", e => {
+                let valid = new Validation("myform");  
+                if (!valid.valid){
+                    e.preventDefault();
+                }
+
+            })
+        }
+    </script>
 </body>
 
 </html>

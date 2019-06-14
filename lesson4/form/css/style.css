@@ -48,4 +48,7 @@ button {
 .div-error {
     border: #d32f2f solid 1px;
 }
+.div-ok {
+    border:green solid 1px;
+}
 
