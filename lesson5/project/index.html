@@ -29,7 +29,7 @@
                             @click="cartVisibility = !cartVisibility">Корзина ({{cartQuantity}})</button>
                     </div>
                     <div class="drop-cart" id="cart" v-if="cartVisibility">
-                        <p v-if="cartQuantity === 0" class="drop-cart-total-text">Корзина пуста</p>
+                        <p v-if="!cartQuantity" class="drop-cart-total-text">Корзина пуста</p>
                         <div v-else class="drop-cart-product" v-for="product of carts" :key="product.id_product">
                             <div class="drop-cart-div-img">
                                 <img class="drop-cart_img" :src="imgCart" alt="product.product_name">

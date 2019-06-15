@@ -55,8 +55,9 @@ const app = new Vue({
                     if (found) {
                         found.quantity++;
                     } else {
-                        this.carts.push(product);
-                        Vue.set(product, 'quantity', 1);
+                        let el = Object.assign({quantity: 1}, product);
+                        this.carts.push(el);
+                       // Vue.set(product, 'quantity', 1);
                     }
                 })
         },
