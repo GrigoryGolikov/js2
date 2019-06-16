@@ -5,6 +5,12 @@
     font-family: 'Lato', sans-serif;
 }*/
 
+button:focus{
+    outline: none;
+}
+.search-field:focus{
+    outline: none;
+}
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -90,6 +96,24 @@ header {
     cursor: pointer;
 }
 
+.btn-cart-smile {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #f16d7f;
+    text-align: center;
+    border: 1px solid #f16d7f;
+    transition: 0.3s;
+    font-family: 'Lato', sans-serif;
+    margin: 1px;
+
+}
+
+.btn-cart-smile:hover{
+    color: #f16d7f;
+    background-color: #ffffff;
+    cursor: pointer;
+}
 
 
 .drop-cart {
@@ -97,7 +121,7 @@ header {
     background-color: #ffffff;
     padding: 12px 20px 20px;
     border: 1px solid #ebebeb;
-    display: none;
+   /* display: none;*/
     top: 60px;
     left: -175px;
     position: absolute;
@@ -165,6 +189,7 @@ header {
 
 .drop-cart-product {
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid #ededed;
     padding-bottom: 15px;
     padding-top: 20px;

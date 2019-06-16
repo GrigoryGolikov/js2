@@ -7,6 +7,7 @@ class List {
         this.data = [];
         this.allProducts = [];
         this.url = url;
+        this.filtered = [];
         this._init();
     }
 
@@ -36,6 +37,19 @@ class List {
     getItem(id) {
         return this.allProducts.find(el => el.id_product === id);
     }
+
+    filter(value){
+        const regexp = new RegExp(value, 'i');
+        this.filtered = this.allProducts.filter(el => regexp.test(el.product_name));
+        this.allProducts.forEach(el => {
+            const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
+            if(!this.filtered.includes(el)){
+                block.classList.add('invisible');
+            } else {
+                block.classList.remove('invisible')
+            }
+        })
+    }
 }
 
 // абстрактный класс элемент
@@ -47,7 +61,7 @@ class Item {
         this.img = img;
     }
     render() {
-        return `<div class="product-item">
+        return `<div class="product-item" data-id="${this.id_product}">
                     <img src="${this.img}" alt="${this.title}">
                     <div class="desc">
                         <h3>${this.product_name}</h3>
@@ -78,6 +92,12 @@ class ProductsList extends List {
                 this.cart.addProduct(this.getItem(id_product), 1)
             }
         })
+
+        document.querySelector('.search-form').addEventListener('submit', e => {
+            e.preventDefault();
+            this.filter(document.querySelector('.search-field').value);
+        })
+
 
     }
 }
@@ -260,3 +280,5 @@ const lists = {
 
 const cart = new Cart;
 const products = new ProductsList(cart);
+
+products.getJson(`getProducts.json`).then(data => products.handleData(data));
