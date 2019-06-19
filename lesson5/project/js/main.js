@@ -55,9 +55,9 @@ const app = new Vue({
                     if (found) {
                         found.quantity++;
                     } else {
-                        let el = Object.assign({quantity: 1}, product);
+                        let el = Object.assign({ quantity: 1 }, product);
                         this.carts.push(el);
-                       // Vue.set(product, 'quantity', 1);
+                        // Vue.set(product, 'quantity', 1);
                     }
                 })
         },
@@ -76,12 +76,15 @@ const app = new Vue({
 
         },
         clearProduct(product) {
+            this.getJson(`${API}/deleteFromBasket.json`)
+                .then(data => {
+                    let found = this.getItem(+product.id_product);
+                    let index = this.carts.indexOf(found);
+                    if (index >= 0) {
+                        this.carts.splice(index, 1);
+                    }
+                })
 
-            let found = this.getItem(+product.id_product);
-            let index = this.carts.indexOf(found);
-            if (index >= 0) {
-                this.carts.splice(index, 1);
-            }
         },
 
     },
