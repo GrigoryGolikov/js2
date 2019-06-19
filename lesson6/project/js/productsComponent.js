@@ -23,7 +23,7 @@ Vue.component('products', {
             .catch(error => {
                 console.log( error);
                 this.error = true;
-                this.errorText = error;
+                this.errorText = "ERROR ! " + error;
             });
 
         this.$parent.getJson(`getProducts.json`)

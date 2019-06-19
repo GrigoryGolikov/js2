@@ -6,7 +6,7 @@ const app = new Vue({
         getJson(url) {
             return fetch(url)
                 .then(result => result.json())
-                .catch(error => console.log("" + 2123132123 + error))
+                .catch(error => console.log(" ERROR!!! " + error))
         },
     },
 })
